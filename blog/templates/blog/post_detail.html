@@ -1,11 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-  {% for post in posts %}
+  {% if post.published_date %}
     <div>
       <p>published: {{ post.published_date }} </p>
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
       <p>{{ post.text|linebreaks}} </p>
+      <img src="{{ post.image.url }}" >
     </div>
-  {% endfor %}
+  {% endif %}
 {% endblock %}
